@@ -1,0 +1,19 @@
+{
+  "name": "social-mongoose",
+  "version": "1.0.0",
+  "description": "## Description",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xtrent777x/social-mongoose.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xtrent777x/social-mongoose/issues"
+  },
+  "homepage": "https://github.com/xtrent777x/social-mongoose#readme"
+}
