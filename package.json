@@ -1,7 +1,7 @@
 {
   "name": "social-mongoose",
   "version": "1.0.0",
-  "description": "## Description",
+  "description": "",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -14,6 +14,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "moment": "^2.29.1",
+    "mongoose": "^5.10.18"
   }
 }
