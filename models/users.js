@@ -15,10 +15,12 @@ const UsersSchema = new Schema(
         trim: true
       },
       thought: {
-    
+        type: Schema.Types.ObjectId,
+        ref: 'Thought'
       },
       friend: {
-       
+        type: Schema.Types.ObjectId,
+        ref: 'User'
       },
       
     },
