@@ -46,6 +46,9 @@ const thoughtController = {
       })
       .catch(err => res.json(err));
   },
+
+  //Need to add get get thought by id, single thought
+
 };
 
 module.exports = thoughtController;

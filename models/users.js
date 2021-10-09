@@ -33,12 +33,10 @@ const UsersSchema = new Schema(
   );
 
 
-//   PizzaSchema.virtual('commentCount').get(function() {
-//     return this.comments.reduce(
-//       (total, comment) => total + comment.replies.length + 1,
-//       0
-//     );
-//   });
+  UsersSchema.virtual('friendCount').get(function() {
+    return this.friend.length;
+    //  https://mongoosejs.com/docs/4.x/docs/api.html#virtualtype-js
+  });
   
  const Users = model('Users', UsersSchema);
 
