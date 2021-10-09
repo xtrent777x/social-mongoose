@@ -1,2 +1,4 @@
-// stucture from module to commit 
-11
+const Users = require('./Users');
+const Thought = require('./Thought');
+
+module.exports = { Users, Thought };
