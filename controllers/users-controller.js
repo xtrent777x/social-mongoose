@@ -5,7 +5,7 @@ const usersController = {
   getAllUsers(req, res) {
     Users.find({})
       .populate({
-        path: 'comments',
+        path: 'thought',
         select: '-__v'
       })
       .select('-__v')
@@ -21,7 +21,7 @@ const usersController = {
   getUsersById({ params }, res) {
     Users.findOne({ _id: params.id })
       .populate({
-        path: 'comments',
+        path: 'thought',
         select: '-__v'
       })
       .select('-__v')
@@ -58,6 +58,7 @@ const usersController = {
       .then(dbSocialData => res.json(dbSocialData))
       .catch(err => res.json(err));
   }
+  
 };
 
 
