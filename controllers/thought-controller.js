@@ -3,17 +3,15 @@ const { Thought, Users } = require('../models');
 const thoughtController = {
   // add thought to user
   addThought({ params, body }, res) {
-    console.log(params);
     Thought.create(body)
       .then(({ _id }) => {
         return Users.findOneAndUpdate(
-          { _id: params.userId },
+          { _id: params.usersId },
           { $push: { thought: _id } },
           { new: true }
         );
       })
       .then(dbSocialData => {
-        console.log(dbSocialData);
         if (!dbSocialData) {
           res.status(404).json({ message: 'No thought found with this id!' });
           return;
@@ -32,7 +30,7 @@ const thoughtController = {
           return res.status(404).json({ message: 'No thought with this id!' });
         }
         return Users.findOneAndUpdate(
-          { _id: params.UsersId },
+          { _id: params.usersId },
           { $pull: { thought: params.thoughtId } },
           { new: true }
         );
@@ -47,7 +45,56 @@ const thoughtController = {
       .catch(err => res.json(err));
   },
 
-  //Need to add get get thought by id, single thought
+  getAllThought(req, res) {
+    Thought.find({})
+      .populate({
+        path: 'reactions',
+        select: '-__v'
+      })
+      .select('-__v')
+      .sort({ _id: -1 })
+      .then(dbSocialData => res.json(dbSocialData))
+      .catch(err => {
+        console.log(err);
+        res.sendStatus(400);
+      });
+  },
+
+      getThoughtById({ params }, res) {
+        Thought.findOne({ _id: params.thoughtId })
+          .populate({
+            path: 'reaction',
+            select: '-__v'
+          })
+          .select('-__v')
+          .then(dbSocialData => {
+            if (!dbSocialData) {
+              res.status(404).json({ message: 'No thought found with this id!' });
+              return;
+            }
+            res.json(dbSocialData);
+          })
+          .catch(err => {
+            console.log(err);
+            res.sendStatus(400);
+          });
+        },      
+
+        addReaction({ params, body }, res) {
+          Thought.findOneAndUpdate(
+                { _id: params.thoughtId },
+                { $push: { reaction: body } },
+                { new: true }
+              )
+            .then(dbSocialData => {
+              if (!dbSocialData) {
+                  res.status(404).json({ message: 'No Thought found with this id!' });
+                  return;
+              }
+              res.json(dbSocialData);
+          })
+          .catch(err => err.json(err));
+  },
 
 };
 
