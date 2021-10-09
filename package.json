@@ -1,7 +1,7 @@
 {
   "name": "social-mongoose",
   "version": "1.0.0",
-  "description": "",
+  "description": "## Description",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -13,9 +13,12 @@
   },
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xtrent777x/social-mongoose/issues"
+  },
+  "homepage": "https://github.com/xtrent777x/social-mongoose#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "moment": "^2.29.1",
-    "mongoose": "^5.10.18"
+    "mongoose": "^6.0.10"
   }
 }
