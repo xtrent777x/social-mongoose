@@ -11,9 +11,9 @@ const ThoughtSchema = new Schema(
       max: 280
     },
     createdAt: {  //https://mongoosejs.com/docs/validation.html
-        type: Date,
-        default: Date.now,
-        get: createdAtVal => dateFormat(createdAtVal)
+      type: Date,
+      default: Date.now,
+      get: createdAtVal => dateFormat(createdAtVal)
     },
     username: {
       type: String,
@@ -34,8 +34,7 @@ const ThoughtSchema = new Schema(
 const ReactionSchema = new Schema(
   {
     reactionId: {
-      type: String,
-      required: true
+      type: Schema.Types.ObjectId
     },
     reactionBody: {
       type: String,
@@ -43,25 +42,25 @@ const ReactionSchema = new Schema(
       max: 280
     },
     username: {
-        type: String,
-        required: true
+      type: String,
+      required: true
     },
     createdAt: {
-        type: Date,
-        default: Date.now,
-        get: createdAtVal => dateFormat(createdAtVal)
-      },
-    
+      type: Date,
+      default: Date.now,
+      get: createdAtVal => dateFormat(createdAtVal)
+    },
+
   },
   {
     toJSON: {
-        getters: true
+      getters: true
     },
     id: false
   }
 );
 
-ThoughtSchema.virtual('reactionCount').get(function() {
+ThoughtSchema.virtual('reactionCount').get(function () {
   return this.reactions.length;
 });
 
