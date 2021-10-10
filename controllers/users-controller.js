@@ -9,7 +9,7 @@ const usersController = {
         select: '-__v'
       })
       .select('-__v')
-      .sort({ _id: -1 })
+      // .sort({ _id: -1 })
       .then(dbSocialData => res.json(dbSocialData))
       .catch(err => {
         console.log(err);
