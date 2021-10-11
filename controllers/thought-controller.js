@@ -79,31 +79,31 @@ const thoughtController = {
       });
   },
 
-  addReaction({ params, body }, res) {
-    Thought.findOneAndUpdate(
-      { _id: params.thoughtId },
-      { $push: { reaction: body } },
-      { new: true }
-    )
-      .then(dbSocialData => {
-        if (!dbSocialData) {
-          res.status(404).json({ message: 'No Thought found with this id!' });
-          return;
-        }
-        res.json(dbSocialData);
-      })
-      .catch(err => err.json(err));
-  },
+//   addReaction({ params, body }, res) {
+//     Thought.findOneAndUpdate(
+//       { _id: params.thoughtId },
+//       { $push: { reaction: body } },
+//       { new: true }
+//     )
+//       .then(dbSocialData => {
+//         if (!dbSocialData) {
+//           res.status(404).json({ message: 'No Thought found with this id!' });
+//           return;
+//         }
+//         res.json(dbSocialData);
+//       })
+//       .catch(err => err.json(err));
+//   },
 
-  removeReaction({ params }, res) {
-    Thought.findOneAndUpdate(
-        { _id: params.thoughtId },
-        { $pull: { reactions: { reactionId: params.reactionId } } },
-        { new: true }
-    )
-        .then(dbSocialData => res.json(dbSocialData))
-        .catch(err => res.json(err));
-}
+//   removeReaction({ params }, res) {
+//     Thought.findOneAndUpdate(
+//         { _id: params.thoughtId },
+//         { $pull: { reactions: { reactionId: params.reactionId } } },
+//         { new: true }
+//     )
+//         .then(dbSocialData => res.json(dbSocialData))
+//         .catch(err => res.json(err));
+// }
 
 };
 

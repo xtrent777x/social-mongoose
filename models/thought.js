@@ -34,7 +34,7 @@ const ReactionSchema = new Schema(
 
 const ThoughtSchema = new Schema(
   {
-    // set custom id to avoid confusion with parent comment _id
+    // set custom id to avoid confusion with parent comment _id ---- pizza hunt
     thoughtText: {
       type: String,
       required: true,
